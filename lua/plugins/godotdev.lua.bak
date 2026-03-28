@@ -1,0 +1,32 @@
+return {
+    "Mathijs-Bakker/godotdev.nvim",
+    dependencies = { 'nvim-lspconfig', 'nvim-dap', 'nvim-treesitter' },
+    config = function()
+        require("godotdev").setup({
+            editor_host = "127.0.0.1", -- Godot editor host
+            editor_port = 6005,        -- Godot LSP port
+            debug_port = 6006,         -- Godot debugger port
+            csharp = true,             -- Enable C# Installation Support
+            autostart_editor_server = true,  -- Enable auto start Nvim server
+            docs = {
+                renderer = "float",      -- default: open docs in a floating window
+                fallback_renderer = "browser",
+                missing_symbol_feedback = "message", -- "message" | "notify"
+                version = "stable",      -- e.g. "stable", "latest", "4.5"
+                language = "zh-cn",
+                source_ref = "master",   -- godot-docs git ref used for floating docs
+                source_base_url = nil,   -- optional override for raw docs source
+                timeout_ms = 10000,
+                cache = {
+                enabled = true,
+                max_entries = 64,
+                },
+                float = {
+                width = 0.8,
+                height = 0.8,
+                border = "rounded",
+                },
+            },
+        })
+    end,
+}
